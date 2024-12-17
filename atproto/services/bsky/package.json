@@ -1,0 +1,9 @@
+{
+  "name": "bsky-app-view-service",
+  "private": true,
+  "dependencies": {
+    "@atproto/bsky": "workspace:^",
+    "@atproto/crypto": "workspace:^",
+    "dd-trace": "3.13.2"
+  }
+}
