@@ -30,6 +30,31 @@ module.exports = async function (env, argv) {
     config.plugins.push(new ReactRefreshWebpackPlugin())
   }
 
+  // Add optimization configurations
+  config.optimization = {
+    ...config.optimization,
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 500000,
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
+            return `vendor.${packageName.replace('@', '')}`;
+          },
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  };
+
   if (GENERATE_STATS || OPEN_ANALYZER) {
     config.plugins.push(
       new BundleAnalyzerPlugin({
