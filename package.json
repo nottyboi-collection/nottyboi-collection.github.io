@@ -1,11 +1,12 @@
 {
+  "homepage": "https://nottyboi-collection.github.io",
   "name": "nottyboi",
   "version": "1.96.0",
   "private": true,
   "engines": {
     "node": ">=20"
   },
-  "homepage": "https://nottyboi-collection.github.io",
+  
   "packageManager": "yarn@4.5.3",
   "scripts": {
     "prepare": "is-ci || husky install",
