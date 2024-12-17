@@ -1,0 +1,21 @@
+{
+  "display": "standalone",
+  "lang": "en",
+  "name": "nottyboi",
+  "short_name": "nottyboi",
+  "start_url": "/?utm_source=web_app_manifest",
+  "theme_color": "#1083fe",
+  "orientation": "portrait",
+  "related_applications": [
+    {
+      "platform": "itunes",
+      "id": "me.nottyboi.nottyboi"
+    },
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=me.nottyboi.nottyboi",
+      "id": "me.nottyboi.nottyboi"
+    }
+  ],
+  "prefer_related_applications": true
+}
