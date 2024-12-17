@@ -1,11 +1,11 @@
 {
-  "name": "bsky.app",
+  "name": "nottyboi",
   "version": "1.96.0",
   "private": true,
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "yarn@1.22.19",
+  "packageManager": "yarn@4.5.3",
   "scripts": {
     "prepare": "is-ci || husky install",
     "postinstall": "patch-package && yarn intl:compile",
@@ -169,7 +169,7 @@
     "react-dom": "^18.2.0",
     "react-image-crop": "^11.0.7",
     "react-keyed-flatten-children": "^3.0.0",
-    "react-native": "0.76.3",
+    "react-native": "0.76.5",
     "react-native-compressor": "1.10.3",
     "react-native-date-picker": "^5.0.7",
     "react-native-drawer-layout": "^4.0.4",
@@ -217,7 +217,7 @@
     "@lingui/macro": "^4.14.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "@react-native/eslint-config": "^0.76.2",
-    "@react-native/typescript-config": "^0.76.1",
+    "@react-native/typescript-config": "^0.76.5",
     "@testing-library/jest-native": "^5.4.3",
     "@testing-library/react-native": "^12.8.1",
     "@types/jest": "^29.4.0",
@@ -267,9 +267,9 @@
     "@react-native/normalize-colors": "0.76.1",
     "@radix-ui/react-focus-scope": "1.1.0",
     "@types/react": "^18",
-    "**/expo-constants": "17.0.3",
-    "**/expo-device": "7.0.1",
-    "**/zod": "3.23.8"
+    "expo-constants": "17.0.3",
+    "expo-device": "7.0.1",
+    "zod": "3.23.8"
   },
   "jest": {
     "preset": "jest-expo/ios",

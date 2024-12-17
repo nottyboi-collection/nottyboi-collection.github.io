@@ -22,9 +22,9 @@ module.exports = function (config) {
   const ASSOCIATED_DOMAINS = [
     'applinks:bsky.app',
     'applinks:staging.bsky.app',
-    'appclips:bsky.app',
-    'appclips:go.bsky.app', // Allows App Clip to work when scanning QR codes
-    // When testing local services, enter an ngrok (et al) domain here. It must use a standard HTTP/HTTPS port.
+    //'appclips:bsky.app',
+    //'appclips:go.bsky.app', // Allows App Clip to work when scanning QR codes
+    'https://select-wise-minnow.ngrok-free.app',
     ...(IS_DEV || IS_TESTFLIGHT ? [] : []),
   ]
 
@@ -43,20 +43,21 @@ module.exports = function (config) {
   return {
     expo: {
       version: VERSION,
-      name: 'Bluesky',
-      slug: 'bluesky',
+      name: 'nottyboi',
+      slug: 'nottyboi',
       scheme: 'bluesky',
-      owner: 'blueskysocial',
+      owner: 'nottyboi',
       runtimeVersion: {
         policy: 'appVersion',
       },
+      newArchEnabled: true,
       orientation: 'portrait',
       icon: './assets/app-icons/ios_icon_default_light.png',
       userInterfaceStyle: 'automatic',
       primaryColor: '#1083fe',
       ios: {
         supportsTablet: false,
-        bundleIdentifier: 'xyz.blueskyweb.app',
+        bundleIdentifier: 'me.nottyboi.nottyboi',
         config: {
           usesNonExemptEncryption: false,
         },
@@ -133,12 +134,12 @@ module.exports = function (config) {
       },
       androidStatusBar: {
         barStyle: 'light-content',
-        backgroundColor: '#00000000',
+        backgroundColor: '#0c7cff', // Match splash background color
+        translucent: true
       },
-      // Dark nav bar in light mode is better than light nav bar in dark mode
       androidNavigationBar: {
         barStyle: 'light-content',
-        backgroundColor: DARK_SPLASH_ANDROID_BACKGROUND,
+        backgroundColor: '#0c7cff', // Match splash background color
       },
       android: {
         icon: './assets/app-icons/android_icon_default_light.png',
@@ -149,7 +150,7 @@ module.exports = function (config) {
           backgroundColor: '#1185FE',
         },
         googleServicesFile: './google-services.json',
-        package: 'xyz.blueskyweb.app',
+        package: 'me.nottyboi.nottyboi',
         intentFilters: [
           {
             action: 'VIEW',
@@ -203,13 +204,11 @@ module.exports = function (config) {
           {
             ios: {
               deploymentTarget: '15.1',
-              newArchEnabled: false,
             },
             android: {
               compileSdkVersion: 35,
               targetSdkVersion: 35,
               buildToolsVersion: '35.0.0',
-              newArchEnabled: false,
             },
           },
         ],
@@ -223,14 +222,14 @@ module.exports = function (config) {
         ],
         'react-native-compressor',
         '@bitdrift/react-native',
-        './plugins/starterPackAppClipExtension/withStarterPackAppClip.js',
+        //'./plugins/starterPackAppClipExtension/withStarterPackAppClip.js',
         './plugins/withAndroidManifestPlugin.js',
         './plugins/withAndroidManifestFCMIconPlugin.js',
         './plugins/withAndroidStylesAccentColorPlugin.js',
         './plugins/withAndroidSplashScreenStatusBarTranslucentPlugin.js',
         './plugins/shareExtension/withShareExtensions.js',
         './plugins/notificationsExtension/withNotificationsExtension.js',
-        './plugins/withAppDelegateReferrer.js',
+        //'./plugins/withAppDelegateReferrer.js',
         [
           'expo-font',
           {
@@ -369,12 +368,17 @@ module.exports = function (config) {
                   {
                     targetName: 'BlueskyClip',
                     bundleIdentifier: 'xyz.blueskyweb.app.AppClip',
+                    entitlements: {
+                      'com.apple.security.application-groups': [
+                        'group.app.bsky',
+                      ],
+                    },
                   },
                 ],
               },
             },
           },
-          projectId: '55bd077a-d905-4184-9c7f-94789ba0f302',
+          projectId: '76699dcb-0b1d-41d0-9437-dbada985a07b',
         },
       },
       hooks: {
