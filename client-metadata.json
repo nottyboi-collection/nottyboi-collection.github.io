@@ -1,0 +1,15 @@
+{
+  "client_id": "https://nottyboi.me/client-metadata.json",
+  "client_name": "NottyBoi MetaData",
+  "client_uri": "https://nottyboi.me",
+  "logo_uri": "https://nottyboi.me/assets/logo.png",
+  "tos_uri": "https://nottyboi.me/tap/tos",
+  "policy_uri": "https://nottyboi.me/tap/policy",
+  "redirect_uris": ["https://nottyboi.me/callback"],
+  "scope": "atproto",
+  "grant_types": ["authorization_code", "refresh_token"],
+  "response_types": ["code"],
+  "token_endpoint_auth_method": "private_key_jwt",
+  "application_type": "web",
+  "dpop_bound_access_tokens": true
+}
