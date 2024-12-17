@@ -24,7 +24,10 @@
     }
   },
   "dependencies": {
-    "mime": "^3.0.0"
+    "@atproto-labs/rollup-plugin-bundle-manifest": "workspace:^",
+    "@types/mime-types": "^2.1.4",
+    "mime": "^3.0.0",
+    "mime-types": "^2.1.35"
   },
   "peerDependencies": {
     "rollup": "^4.0.0"
