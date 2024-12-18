@@ -14567,7 +14567,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-web-browser@npm:~14.0.1":
+"expo-web-browser@npm:^14.0.1":
   version: 14.0.1
   resolution: "expo-web-browser@npm:14.0.1"
   peerDependencies:
@@ -19769,7 +19769,7 @@ __metadata:
     expo-system-ui: "npm:^4.0.4"
     expo-task-manager: "npm:~12.0.3"
     expo-updates: "npm:~0.26.10"
-    expo-web-browser: "npm:~14.0.1"
+    expo-web-browser: "npm:^14.0.1"
     fast-text-encoding: "npm:^1.0.6"
     file-loader: "npm:6.2.0"
     gh-pages: "npm:^6.2.0"
