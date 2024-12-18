@@ -5,7 +5,7 @@ import { BrowserOAuthClient } from '@atproto/oauth-client-browser'
 
 async function main() {
   const oauthClient = await BrowserOAuthClient.load({
-    clientId: 'https://e300-2607-f1c0-f04d-ea00-00-1.ngrok-free.app/client-metadata.json',
+    clientId: 'https://metadata.nottyboi.me/oauth/client-metadata.json',
     handleResolver: 'https://bsky.social/',
   })
 

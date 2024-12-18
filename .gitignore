@@ -123,3 +123,6 @@ bskyogcard/src/assets/fonts/noto-*
 /.yarnrc.yml/
 /.notes
 /env/
+oauth/.parcel-cache
+oauth/.yarn
+oauth/dist
