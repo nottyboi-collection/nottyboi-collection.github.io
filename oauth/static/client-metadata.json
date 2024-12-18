@@ -5,7 +5,7 @@
     "logo_uri": "https://nottyboi.me/assets/logo.png",
     "tos_uri": "https://nottyboi.me/tap/tos",
     "policy_uri": "https://nottyboi.me/tap/policy",
-    "redirect_uris": ["https://metadata.nottyboi.me/oauth/callback"],
+    "redirect_uris": ["https://metadata.nottyboi.me/oauth/callback/"],
     "scope": "atproto transition:generic",
     "grant_types": ["authorization_code", "refresh_token"],
     "response_types": ["code"],
