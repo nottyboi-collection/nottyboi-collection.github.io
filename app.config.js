@@ -50,7 +50,7 @@ module.exports = function (config) {
       runtimeVersion: {
         policy: 'appVersion',
       },
-      newArchEnabled: true,
+      newArchEnabled: false,
       orientation: 'portrait',
       icon: './assets/app-icons/ios_icon_default_light.png',
       userInterfaceStyle: 'automatic',

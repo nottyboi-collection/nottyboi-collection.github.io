@@ -121,4 +121,5 @@ bskyogcard/src/assets/fonts/noto-*
 
 .yarn/
 /.yarnrc.yml/
-.notes
+/.notes
+/env/

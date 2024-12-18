@@ -1,0 +1,11 @@
+{
+    "client_id": "https://e300-2607-f1c0-f04d-ea00-00-1.ngrok-free.app/client-metadata.json",
+    "client_name": "NottyBoi OAuth App",
+    "client_uri": "https://e300-2607-f1c0-f04d-ea00-00-1.ngrok-free.app",
+    "redirect_uris": ["https://e300-2607-f1c0-f04d-ea00-00-1.ngrok-free.app/"],
+    "grant_types": ["authorization_code"],
+    "response_types": ["code"],
+    "token_endpoint_auth_method": "none",
+    "application_type": "web",
+    "dpop_bound_access_tokens": true
+  }
