@@ -43,7 +43,7 @@ RUN rm -rf node_modules
 # install only prod deps, hoisted to root node_modules dir
 RUN pnpm install --prod --shamefully-hoist --frozen-lockfile --prefer-offline > /dev/null
 
-WORKDIR services/pds
+WORKDIR /app/services/pds
 
 # Uses assets from build stage to reduce build size
 FROM node:20.11-alpine3.18
@@ -68,6 +68,6 @@ ENV UV_USE_IO_URING=0
 USER node
 CMD ["node", "--heapsnapshot-signal=SIGUSR2", "--enable-source-maps", "--require=./tracer.js", "index.js"]
 
-LABEL org.opencontainers.image.source=https://github.com/bluesky-social/atproto
+LABEL org.opencontainers.image.source=https://github.com/nottyboi-collection/atproto
 LABEL org.opencontainers.image.description="ATP Personal Data Server (PDS)"
 LABEL org.opencontainers.image.licenses=MIT

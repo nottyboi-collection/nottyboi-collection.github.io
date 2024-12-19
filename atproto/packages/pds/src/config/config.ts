@@ -262,7 +262,7 @@ export const envToCfg = (env: ServerEnvironment): ServerConfig => {
         issuer: serviceCfg.publicUrl,
         provider: {
           customization: {
-            name: env.serviceName ?? 'Personal PDS',
+            name: env.serviceName ?? 'NottyBoi PDS',
             logo: env.logoUrl,
             colors: {
               brand: env.brandColor,

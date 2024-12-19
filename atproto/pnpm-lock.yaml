@@ -7,6 +7,91 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@atproto/api':
+        specifier: workspace:^
+        version: link:packages/api
+      '@atproto/aws':
+        specifier: workspace:^
+        version: link:packages/aws
+      '@atproto/bsky':
+        specifier: workspace:^
+        version: link:packages/bsky
+      '@atproto/bsync':
+        specifier: workspace:^
+        version: link:packages/bsync
+      '@atproto/common':
+        specifier: workspace:^
+        version: link:packages/common
+      '@atproto/common-web':
+        specifier: workspace:^
+        version: link:packages/common-web
+      '@atproto/crypto':
+        specifier: workspace:^
+        version: link:packages/crypto
+      '@atproto/did':
+        specifier: workspace:^
+        version: link:packages/did
+      '@atproto/did-resolver':
+        specifier: ^0.1.0
+        version: 0.1.0
+      '@atproto/identity':
+        specifier: workspace:^
+        version: link:packages/identity
+      '@atproto/jwk':
+        specifier: workspace:^
+        version: link:packages/oauth/jwk
+      '@atproto/jwk-jose':
+        specifier: workspace:^
+        version: link:packages/oauth/jwk-jose
+      '@atproto/jwk-webcrypto':
+        specifier: workspace:^
+        version: link:packages/oauth/jwk-webcrypto
+      '@atproto/lex-cli':
+        specifier: workspace:^
+        version: link:packages/lex-cli
+      '@atproto/lexicon':
+        specifier: workspace:^
+        version: link:packages/lexicon
+      '@atproto/oauth-client':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-client
+      '@atproto/oauth-client-browser':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-client-browser
+      '@atproto/oauth-client-browser-example':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-client-browser-example
+      '@atproto/oauth-client-node':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-client-node
+      '@atproto/oauth-provider':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-provider
+      '@atproto/oauth-types':
+        specifier: workspace:^
+        version: link:packages/oauth/oauth-types
+      '@atproto/ozone':
+        specifier: workspace:^
+        version: link:packages/ozone
+      '@atproto/pds':
+        specifier: workspace:^
+        version: link:packages/pds
+      '@atproto/repo':
+        specifier: workspace:^
+        version: link:packages/repo
+      '@atproto/sync':
+        specifier: workspace:^
+        version: link:packages/sync
+      '@atproto/syntax':
+        specifier: workspace:^
+        version: link:packages/syntax
+      '@atproto/xrpc':
+        specifier: workspace:^
+        version: link:packages/xrpc
+      '@atproto/xrpc-server':
+        specifier: workspace:^
+        version: link:packages/xrpc-server
     devDependencies:
       '@atproto/dev-env':
         specifier: workspace:^
@@ -96,12 +181,18 @@ importers:
       '@atproto/lex-cli':
         specifier: workspace:^
         version: link:../lex-cli
+      '@types/node':
+        specifier: ^18.19.56
+        version: 18.19.56
       jest:
         specifier: ^28.1.2
         version: 28.1.2(@types/node@18.19.56)(ts-node@10.8.2)
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
+      ts-node:
+        specifier: ^10.8.2
+        version: 10.8.2(@swc/core@1.3.42)(@types/node@18.19.56)(typescript@5.6.3)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -1645,6 +1736,15 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
+  /@atproto/common-web@0.3.1:
+    resolution: {integrity: sha512-N7wiTnus5vAr+lT//0y8m/FaHHLJ9LpGuEwkwDAeV3LCiPif4m/FS8x/QOYrx1PdZQwKso95RAPzCGWQBH5j6Q==}
+    dependencies:
+      graphemer: 1.4.0
+      multiformats: 9.9.0
+      uint8arrays: 3.0.0
+      zod: 3.23.8
+    dev: false
+
   /@atproto/common@0.1.0:
     resolution: {integrity: sha512-OB5tWE2R19jwiMIs2IjQieH5KTUuMb98XGCn9h3xuu6NanwjlmbCYMv08fMYwIp3UQ6jcq//84cDT3Bu6fJD+A==}
     dependencies:
@@ -1669,6 +1769,17 @@ packages:
       multiformats: 9.9.0
       one-webcrypto: 1.0.3
       uint8arrays: 3.0.0
+
+  /@atproto/did-resolver@0.1.0:
+    resolution: {integrity: sha512-ztljyMMCqXvJSi/Qqa2zEQFvOm1AUUR7Bybr3cM1BCddbhW46gk6/g8BgdZeDt2sMBdye37qTctR9O/FjhigvQ==}
+    dependencies:
+      '@atproto/common-web': 0.3.1
+      '@atproto/crypto': 0.1.0
+      axios: 0.27.2
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /@atproto/pds@0.3.0-entryway.3:
     resolution: {integrity: sha512-hc/KcBgFjSfrnNgrc9vx/QaCov79cXbRRQEWrAt/rdMLhcFEGCydN7ukddjOiLkLdhDqywSHrLOEbqg+MReQXw==}
@@ -5487,7 +5598,7 @@ packages:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
-      '@jridgewell/trace-mapping': 0.3.19
+      '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
   /@jridgewell/gen-mapping@0.3.5:

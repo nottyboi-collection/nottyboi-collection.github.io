@@ -8,7 +8,7 @@ export const createRouter = (ctx: AppContext): express.Router => {
   router.get('/', function (req, res) {
     res.type('text/plain')
     res.send(
-      'This is an AT Protocol Personal Data Server (PDS): https://github.com/bluesky-social/atproto\n\nMost API routes are under /xrpc/',
+      'This is an AT Protocol Personal Data Server (PDS): https://github.com/nottyboi-collection/atproto\n\nMost API routes are under /xrpc/',
     )
   })
 

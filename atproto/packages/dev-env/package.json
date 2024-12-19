@@ -9,7 +9,7 @@
   "homepage": "https://atproto.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bluesky-social/atproto",
+    "url": "https://github.com/nottyboi-collection/atproto",
     "directory": "packages/dev-env"
   },
   "main": "dist/index.js",

@@ -1,7 +1,7 @@
 {
   "name": "atp",
   "version": "0.0.1",
-  "repository": "git@github.com:bluesky-social/atproto.git",
+  "repository": "git@github.com:nottyboi-collection/atproto.git",
   "author": "Bluesky PBC <hello@blueskyweb.xyz>",
   "license": "MIT",
   "private": true,
@@ -56,5 +56,35 @@
       "packages/oauth/*",
       "packages/internal/*"
     ]
+  },
+  "dependencies": {
+    "@atproto/api": "workspace:^",
+    "@atproto/aws": "workspace:^",
+    "@atproto/bsky": "workspace:^",
+    "@atproto/bsync": "workspace:^",
+    "@atproto/common": "workspace:^",
+    "@atproto/common-web": "workspace:^",
+    "@atproto/crypto": "workspace:^",
+    "@atproto/did": "workspace:^",
+    "@atproto/did-resolver": "^0.1.0",
+    "@atproto/identity": "workspace:^",
+    "@atproto/jwk": "workspace:^",
+    "@atproto/jwk-jose": "workspace:^",
+    "@atproto/jwk-webcrypto": "workspace:^",
+    "@atproto/lex-cli": "workspace:^",
+    "@atproto/lexicon": "workspace:^",
+    "@atproto/oauth-client": "workspace:^",
+    "@atproto/oauth-client-browser": "workspace:^",
+    "@atproto/oauth-client-browser-example": "workspace:^",
+    "@atproto/oauth-client-node": "workspace:^",
+    "@atproto/oauth-provider": "workspace:^",
+    "@atproto/oauth-types": "workspace:^",
+    "@atproto/ozone": "workspace:^",
+    "@atproto/pds": "workspace:^",
+    "@atproto/repo": "workspace:^",
+    "@atproto/sync": "workspace:^",
+    "@atproto/syntax": "workspace:^",
+    "@atproto/xrpc": "workspace:^",
+    "@atproto/xrpc-server": "workspace:^"
   }
 }
