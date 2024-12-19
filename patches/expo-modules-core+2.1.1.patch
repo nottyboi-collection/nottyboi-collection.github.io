@@ -1,0 +1,219 @@
+diff --git a/node_modules/expo-modules-core/CHANGELOG.md b/node_modules/expo-modules-core/CHANGELOG.md
+index de9e0cd..0c52ce8 100644
+--- a/node_modules/expo-modules-core/CHANGELOG.md
++++ b/node_modules/expo-modules-core/CHANGELOG.md
+@@ -10,14 +10,6 @@
+ 
+ ### 💡 Others
+ 
+-## 2.1.2 — 2024-12-16
+-
+-### 🐛 Bug fixes
+-
+-- Ensure `uuid.v4`and`uuid.v5` is available on old react native architecture. ([#33621](https://github.com/expo/expo/pull/33621) by [@andrejpavlovic](https://github.com/andrejpavlovic))
+-- Changed `import` to `import type` for TS type declarations. ([#33447](https://github.com/expo/expo/pull/33447) by [@j-piasecki](https://github.com/j-piasecki))
+-- [macOS] Allow SwiftUI views to work on macOS ([#33506](https://github.com/expo/expo/pull/33506) by [@hassankhan](https://github.com/hassankhan))
+-
+ ## 2.1.1 — 2024-12-02
+ 
+ _This version does not introduce any user-facing changes._
+diff --git a/node_modules/expo-modules-core/android/build.gradle b/node_modules/expo-modules-core/android/build.gradle
+index cb56998..fef0b73 100644
+--- a/node_modules/expo-modules-core/android/build.gradle
++++ b/node_modules/expo-modules-core/android/build.gradle
+@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+ apply plugin: 'com.android.library'
+ 
+ group = 'host.exp.exponent'
+-version = '2.1.2'
++version = '2.1.1'
+ 
+ def expoModulesCorePlugin = new File(project(":expo-modules-core").projectDir.absolutePath, "ExpoModulesCorePlugin.gradle")
+ apply from: expoModulesCorePlugin
+@@ -67,7 +67,7 @@ android {
+   defaultConfig {
+     consumerProguardFiles 'proguard-rules.pro'
+     versionCode 1
+-    versionName "2.1.2"
++    versionName "2.1.1"
+     buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled.toString()
+ 
+     testInstrumentationRunner "expo.modules.TestRunner"
+diff --git a/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/devtools/ExpoNetworkInspectOkHttpInterceptors.kt b/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/devtools/ExpoNetworkInspectOkHttpInterceptors.kt
+index 47c4d15..afe138d 100644
+--- a/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/devtools/ExpoNetworkInspectOkHttpInterceptors.kt
++++ b/node_modules/expo-modules-core/android/src/main/java/expo/modules/kotlin/devtools/ExpoNetworkInspectOkHttpInterceptors.kt
+@@ -125,6 +125,10 @@ internal fun peekResponseBody(
+ }
+ 
+ internal fun shouldParseBody(response: Response): Boolean {
++  if (response.request.url.encodedPath == "/bitdrift_public.protobuf.client.v1.ApiService/Mux") {
++    return false
++  }
++
+   // Check for Content-Type
+   val skipContentTypes = listOf(
+     "text/event-stream", // Server Sent Events
+diff --git a/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts b/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts
+index 35a6cc4..d19c9bd 100644
+--- a/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts
++++ b/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts
+@@ -1,4 +1,4 @@
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ /**
+  * @deprecated `NativeModulesProxy` is deprecated and might be removed in the future releases.
+  * Use `requireNativeModule` or `requireOptionalNativeModule` instead.
+diff --git a/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts.map b/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts.map
+index ae69fd2..6a5c61e 100644
+--- a/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts.map
++++ b/node_modules/expo-modules-core/build/NativeModulesProxy.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"NativeModulesProxy.d.ts","sourceRoot":"","sources":["../src/NativeModulesProxy.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AAIpE;;;GAGG;;;;AACH,wBAAiE"}
+\ No newline at end of file
++{"version":3,"file":"NativeModulesProxy.d.ts","sourceRoot":"","sources":["../src/NativeModulesProxy.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AAI/D;;;GAGG;;;;AACH,wBAAiE"}
+\ No newline at end of file
+diff --git a/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts b/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts
+index 1e93c6b..2fd4ae9 100644
+--- a/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts
++++ b/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts
+@@ -1,4 +1,4 @@
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ /**
+  * @deprecated `NativeModulesProxy` is deprecated and might be removed in the future releases.
+  * Use `requireNativeModule` or `requireOptionalNativeModule` instead.
+diff --git a/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts.map b/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts.map
+index 394d397..a7a10d8 100644
+--- a/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts.map
++++ b/node_modules/expo-modules-core/build/NativeModulesProxy.native.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"NativeModulesProxy.native.d.ts","sourceRoot":"","sources":["../src/NativeModulesProxy.native.ts"],"names":[],"mappings":"AAOA,OAAO,KAAK,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AAUpE;;;GAGG;AACH,QAAA,MAAM,kBAAkB,EAAE;IAAE,CAAC,UAAU,EAAE,MAAM,GAAG,iBAAiB,CAAA;CAAO,CAAC;AA+D3E,eAAe,kBAAkB,CAAC"}
+\ No newline at end of file
++{"version":3,"file":"NativeModulesProxy.native.d.ts","sourceRoot":"","sources":["../src/NativeModulesProxy.native.ts"],"names":[],"mappings":"AAOA,OAAO,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AAU/D;;;GAGG;AACH,QAAA,MAAM,kBAAkB,EAAE;IAAE,CAAC,UAAU,EAAE,MAAM,GAAG,iBAAiB,CAAA;CAAO,CAAC;AA+D3E,eAAe,kBAAkB,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-modules-core/build/index.d.ts b/node_modules/expo-modules-core/build/index.d.ts
+index 9bde50f..9e64a52 100644
+--- a/node_modules/expo-modules-core/build/index.d.ts
++++ b/node_modules/expo-modules-core/build/index.d.ts
+@@ -2,7 +2,7 @@ import EventEmitter, { type EventSubscription } from './EventEmitter';
+ import { LegacyEventEmitter } from './LegacyEventEmitter';
+ import NativeModule from './NativeModule';
+ import NativeModulesProxy from './NativeModulesProxy';
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ import { requireNativeViewManager } from './NativeViewManagerAdapter';
+ import Platform from './Platform';
+ import SharedObject from './SharedObject';
+diff --git a/node_modules/expo-modules-core/build/index.d.ts.map b/node_modules/expo-modules-core/build/index.d.ts.map
+index 72599c4..9fc3cc2 100644
+--- a/node_modules/expo-modules-core/build/index.d.ts.map
++++ b/node_modules/expo-modules-core/build/index.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,YAAY,EAAE,EAAE,KAAK,iBAAiB,EAAE,MAAM,gBAAgB,CAAC;AACtE,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAC1D,OAAO,YAAY,MAAM,gBAAgB,CAAC;AAC1C,OAAO,kBAAkB,MAAM,sBAAsB,CAAC;AACtD,OAAO,KAAK,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AACpE,OAAO,EAAE,wBAAwB,EAAE,MAAM,4BAA4B,CAAC;AACtE,OAAO,QAAQ,MAAM,YAAY,CAAC;AAClC,OAAO,YAAY,MAAM,gBAAgB,CAAC;AAC1C,OAAO,SAAS,MAAM,aAAa,CAAC;AACpC,OAAO,EAAE,UAAU,EAAE,MAAM,qBAAqB,CAAC;AACjD,OAAO,EAAE,mBAAmB,EAAE,MAAM,8BAA8B,CAAC;AAEnE,OAAO,8BAA8B,CAAC;AACtC,OAAO,aAAa,CAAC;AAErB,mBAAmB,0BAA0B,CAAC;AAE9C,OAAO,EAAE,OAAO,IAAI,IAAI,EAAE,MAAM,QAAQ,CAAC;AAEzC,OAAO,EACL,iBAAiB,EACjB,QAAQ,EACR,wBAAwB,EAExB,YAAY,EACZ,YAAY,EACZ,SAAS,EACT,YAAY,EAEZ,UAAU,EACV,mBAAmB,EAEnB,iBAAiB,EAEjB,kBAAkB,EAClB,kBAAkB,GACnB,CAAC;AAEF,cAAc,uBAAuB,CAAC;AACtC,cAAc,qBAAqB,CAAC;AACpC,cAAc,qBAAqB,CAAC;AAEpC,cAAc,wBAAwB,CAAC;AACvC,cAAc,mBAAmB,CAAC;AAElC,cAAc,QAAQ,CAAC;AAEvB,cAAc,kCAAkC,CAAC;AACjD,cAAc,UAAU,CAAC"}
+\ No newline at end of file
++{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../src/index.ts"],"names":[],"mappings":"AAAA,OAAO,YAAY,EAAE,EAAE,KAAK,iBAAiB,EAAE,MAAM,gBAAgB,CAAC;AACtE,OAAO,EAAE,kBAAkB,EAAE,MAAM,sBAAsB,CAAC;AAC1D,OAAO,YAAY,MAAM,gBAAgB,CAAC;AAC1C,OAAO,kBAAkB,MAAM,sBAAsB,CAAC;AACtD,OAAO,EAAE,iBAAiB,EAAE,MAAM,4BAA4B,CAAC;AAC/D,OAAO,EAAE,wBAAwB,EAAE,MAAM,4BAA4B,CAAC;AACtE,OAAO,QAAQ,MAAM,YAAY,CAAC;AAClC,OAAO,YAAY,MAAM,gBAAgB,CAAC;AAC1C,OAAO,SAAS,MAAM,aAAa,CAAC;AACpC,OAAO,EAAE,UAAU,EAAE,MAAM,qBAAqB,CAAC;AACjD,OAAO,EAAE,mBAAmB,EAAE,MAAM,8BAA8B,CAAC;AAEnE,OAAO,8BAA8B,CAAC;AACtC,OAAO,aAAa,CAAC;AAErB,mBAAmB,0BAA0B,CAAC;AAE9C,OAAO,EAAE,OAAO,IAAI,IAAI,EAAE,MAAM,QAAQ,CAAC;AAEzC,OAAO,EACL,iBAAiB,EACjB,QAAQ,EACR,wBAAwB,EAExB,YAAY,EACZ,YAAY,EACZ,SAAS,EACT,YAAY,EAEZ,UAAU,EACV,mBAAmB,EAEnB,iBAAiB,EAEjB,kBAAkB,EAClB,kBAAkB,GACnB,CAAC;AAEF,cAAc,uBAAuB,CAAC;AACtC,cAAc,qBAAqB,CAAC;AACpC,cAAc,qBAAqB,CAAC;AAEpC,cAAc,wBAAwB,CAAC;AACvC,cAAc,mBAAmB,CAAC;AAElC,cAAc,QAAQ,CAAC;AAEvB,cAAc,kCAAkC,CAAC;AACjD,cAAc,UAAU,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-modules-core/build/uuid/uuid.d.ts.map b/node_modules/expo-modules-core/build/uuid/uuid.d.ts.map
+index f555021..b89de41 100644
+--- a/node_modules/expo-modules-core/build/uuid/uuid.d.ts.map
++++ b/node_modules/expo-modules-core/build/uuid/uuid.d.ts.map
+@@ -1 +1 @@
+-{"version":3,"file":"uuid.d.ts","sourceRoot":"","sources":["../../src/uuid/uuid.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,IAAI,EAAmB,MAAM,cAAc,CAAC;AAgCrD,QAAA,MAAM,IAAI,EAAE,IAIX,CAAC;AACF,eAAe,IAAI,CAAC"}
+\ No newline at end of file
++{"version":3,"file":"uuid.d.ts","sourceRoot":"","sources":["../../src/uuid/uuid.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,IAAI,EAAmB,MAAM,cAAc,CAAC;AA+BrD,QAAA,MAAM,IAAI,EAAE,IAIX,CAAC;AACF,eAAe,IAAI,CAAC"}
+\ No newline at end of file
+diff --git a/node_modules/expo-modules-core/ios/Core/Views/SwiftUI/SwiftUIViewHost.swift b/node_modules/expo-modules-core/ios/Core/Views/SwiftUI/SwiftUIViewHost.swift
+index 10cdf81..38cbccd 100644
+--- a/node_modules/expo-modules-core/ios/Core/Views/SwiftUI/SwiftUIViewHost.swift
++++ b/node_modules/expo-modules-core/ios/Core/Views/SwiftUI/SwiftUIViewHost.swift
+@@ -9,16 +9,6 @@ extension ExpoSwiftUI {
+   struct UIViewHost: UIViewRepresentable {
+     let view: UIView
+ 
+-    #if os(macOS)
+-    func makeNSView(context: Context) -> NSView {
+-      return view
+-    }
+-
+-    func updateNSView(_ nsView: NSView, context: Context) {
+-        // Nothing to do here
+-    }
+-    #endif
+-
+     func makeUIView(context: Context) -> UIView {
+       return view
+     }
+diff --git a/node_modules/expo-modules-core/ios/Platform.swift b/node_modules/expo-modules-core/ios/Platform.swift
+index c84b232..902a453 100644
+--- a/node_modules/expo-modules-core/ios/Platform.swift
++++ b/node_modules/expo-modules-core/ios/Platform.swift
+@@ -10,6 +10,5 @@ public typealias UIResponder = NSResponder
+ public typealias UIApplicationDelegate = NSApplicationDelegate
+ public typealias UIWindow = NSWindow
+ public typealias UIHostingController = NSHostingController
+-public typealias UIViewRepresentable = NSViewRepresentable
+ 
+ #endif // os(macOS)
+diff --git a/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts b/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts
+index d378217..4f4244d 100644
+--- a/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts
++++ b/node_modules/expo-modules-core/src/NativeModulesProxy.native.ts
+@@ -5,7 +5,7 @@
+ 
+ import { NativeModules } from 'react-native';
+ 
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ 
+ const LegacyNativeProxy = NativeModules.NativeUnimoduleProxy;
+ // Fixes `cannot find name 'global'.` in tests
+diff --git a/node_modules/expo-modules-core/src/NativeModulesProxy.ts b/node_modules/expo-modules-core/src/NativeModulesProxy.ts
+index 5eab9de..e0409ba 100644
+--- a/node_modules/expo-modules-core/src/NativeModulesProxy.ts
++++ b/node_modules/expo-modules-core/src/NativeModulesProxy.ts
+@@ -1,4 +1,4 @@
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ 
+ // We default to an empty object shim wherever we don't have an environment-specific implementation
+ 
+diff --git a/node_modules/expo-modules-core/src/index.ts b/node_modules/expo-modules-core/src/index.ts
+index 5cdb4af..944f46f 100644
+--- a/node_modules/expo-modules-core/src/index.ts
++++ b/node_modules/expo-modules-core/src/index.ts
+@@ -2,7 +2,7 @@ import EventEmitter, { type EventSubscription } from './EventEmitter';
+ import { LegacyEventEmitter } from './LegacyEventEmitter';
+ import NativeModule from './NativeModule';
+ import NativeModulesProxy from './NativeModulesProxy';
+-import type { ProxyNativeModule } from './NativeModulesProxy.types';
++import { ProxyNativeModule } from './NativeModulesProxy.types';
+ import { requireNativeViewManager } from './NativeViewManagerAdapter';
+ import Platform from './Platform';
+ import SharedObject from './SharedObject';
+diff --git a/node_modules/expo-modules-core/src/uuid/uuid.ts b/node_modules/expo-modules-core/src/uuid/uuid.ts
+index 5362ed8..148beac 100644
+--- a/node_modules/expo-modules-core/src/uuid/uuid.ts
++++ b/node_modules/expo-modules-core/src/uuid/uuid.ts
+@@ -1,9 +1,10 @@
+ import bytesToUuid from './lib/bytesToUuid';
+ import { UUID, Uuidv5Namespace } from './uuid.types';
+ 
+-function uuidv4(): string {
+-  const nativeUuidv4 = globalThis?.expo?.uuidv4;
++const nativeUuidv4 = globalThis?.expo?.uuidv4;
++const nativeUuidv5 = globalThis?.expo?.uuidv5;
+ 
++function uuidv4(): string {
+   if (!nativeUuidv4) {
+     throw Error(
+       "Native UUID version 4 generator implementation wasn't found in `expo-modules-core`"
+@@ -22,8 +23,6 @@ function uuidv5(name: string, namespace: string | number[]) {
+     throw new Error('`namespace` must be a valid UUID string or an Array of 16 byte values');
+   }
+ 
+-  const nativeUuidv5 = globalThis?.expo?.uuidv5;
+-
+   if (!nativeUuidv5) {
+     throw Error("Native UUID type 5 generator implementation wasn't found in `expo-modules-core`");
+   }

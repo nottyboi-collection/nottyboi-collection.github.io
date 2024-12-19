@@ -24,7 +24,8 @@ module.exports = function (config) {
     'applinks:staging.bsky.app',
     //'appclips:bsky.app',
     //'appclips:go.bsky.app', // Allows App Clip to work when scanning QR codes
-    'https://select-wise-minnow.ngrok-free.app',
+    'https://nottyboi.me',
+    'https://nottyboi-collection.github.io/nottyboi-collection.github.io',
     ...(IS_DEV || IS_TESTFLIGHT ? [] : []),
   ]
 
@@ -389,7 +390,7 @@ module.exports = function (config) {
           {
             file: './postHooks/uploadSentrySourcemapsPostHook',
             config: {
-              organization: 'blueskyweb',
+              organization: 'nottyboi',
               project: 'react-native',
               release: VERSION,
               dist: SENTRY_DIST,

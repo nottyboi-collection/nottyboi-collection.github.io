@@ -11,7 +11,7 @@ const templateFile = path.join(
 
 const {entrypoints} = require(path.join(
   projectRoot,
-  'web-build/asset-manifest.json',
+  'docs/asset-manifest.json',
 ))
 
 console.log(`Found ${entrypoints.length} entrypoints`)
@@ -44,6 +44,6 @@ function copyFiles(sourceDir, targetDir) {
   })
 }
 
-copyFiles('web-build/static/js', 'bskyweb/static/js')
-copyFiles('web-build/static/css', 'bskyweb/static/css')
-copyFiles('web-build/static/media', 'bskyweb/static/media')
+copyFiles('docs/static/js', 'bskyweb/static/js')
+copyFiles('docs/static/css', 'bskyweb/static/css')
+copyFiles('docs/static/media', 'bskyweb/static/media')
