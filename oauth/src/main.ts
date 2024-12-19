@@ -3,7 +3,7 @@ import { BrowserOAuthClient } from '@atproto/oauth-client-browser'
 
 async function main() {
   const oauthClient = await BrowserOAuthClient.load({
-    clientId: 'https://nottyboi.me/client-metadata.json',
+    clientId: 'https://nottyboi.me/oauth/static/client-metadata.json',
     handleResolver: 'https://bsky.social/',
   })
 
