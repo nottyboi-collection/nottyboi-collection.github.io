@@ -1,5 +1,5 @@
 {
-    "client_id": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
+    "client_id": "https://raw.githubusercontent.com/nottyboi-collection/nottyboi-collection.github.io/main/oauth/dist/static/client-metadata.json",
     "client_name": "NottyBoi OAuth",
     "client_uri": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
     "logo_uri": "https://nottyboi.me/oauth/dist/assets/logo.png",
