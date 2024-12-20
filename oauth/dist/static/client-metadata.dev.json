@@ -1,0 +1,22 @@
+{
+    "client_id": "http://127.0.0.1",
+    "client_name": "NottyBoi OAuth (Development)",
+    "client_uri": "http://127.0.0.1:4173/oauth",
+    "logo_uri": "http://127.0.0.1:4173/oauth/assets/logo.png",
+    "tos_uri": "http://127.0.0.1:4173/oauth/tap/tos",
+    "policy_uri": "http://127.0.0.1:4173/oauth/tap/policy",
+    "redirect_uris": [
+        "http://127.0.0.1:4173/oauth/callback/"
+    ],
+    "scope": "atproto transition:generic",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "response_types": [
+        "code"
+    ],
+    "token_endpoint_auth_method": "none",
+    "application_type": "web",
+    "dpop_bound_access_tokens": true
+}
