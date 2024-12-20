@@ -1,0 +1,22 @@
+{
+    "client_id": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
+    "client_name": "NottyBoi OAuth",
+    "client_uri": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
+    "logo_uri": "https://nottyboi.me/oauth/dist/assets/logo.png",
+    "tos_uri": "https://nottyboi.me/oauth/dist/tap/tos",
+    "policy_uri": "https://nottyboi.me/oauth/dist/tap/policy",
+    "redirect_uris": [
+        "https://nottyboi.me/oauth/dist/callback"
+    ],
+    "scope": "atproto transition:generic",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "response_types": [
+        "code"
+    ],
+    "token_endpoint_auth_method": "none",
+    "application_type": "web",
+    "dpop_bound_access_tokens": true
+}

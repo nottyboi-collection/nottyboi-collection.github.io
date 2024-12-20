@@ -1,0 +1,22 @@
+{
+    "client_id": "http://localhost",
+    "client_name": "NottyBoi OAuth (Development)",
+    "client_uri": "http://localhost:4173",
+    "logo_uri": "http://localhost:4173/assets/logo.png",
+    "tos_uri": "http://localhost:4173/tap/tos",
+    "policy_uri": "http://localhost:4173/tap/policy",
+    "redirect_uris": [
+        "http://localhost:4173/callback"
+    ],
+    "scope": "atproto transition:generic",
+    "grant_types": [
+        "authorization_code",
+        "refresh_token"
+    ],
+    "response_types": [
+        "code"
+    ],
+    "token_endpoint_auth_method": "none",
+    "application_type": "web",
+    "dpop_bound_access_tokens": true
+}
