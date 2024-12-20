@@ -52,9 +52,7 @@
     "make-deploy-bundle": "bash scripts/bundleUpdate.sh",
     "generate-webpack-stats-file": "EXPO_PUBLIC_GENERATE_STATS=1 yarn build-web",
     "open-analyzer": "EXPO_PUBLIC_OPEN_ANALYZER=1 yarn build-web",
-    "icons:optimize": "svgo -f ./assets/icons",
-    "predeploy": "yarn run build-web",
-    "deploy": "nottyboi -d web-build"
+    "icons:optimize": "svgo -f ./assets/icons"
   },
   "dependencies": {
     "@atproto/api": "^0.13.20",

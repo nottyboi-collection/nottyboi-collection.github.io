@@ -1,12 +1,12 @@
 {
-    "client_id": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
+    "client_id": "https://nottyboi-collection.github.io/oauth/static/client-metadata.json",
     "client_name": "NottyBoi OAuth",
-    "client_uri": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
-    "logo_uri": "https://nottyboi.me/oauth/dist/assets/logo.png",
-    "tos_uri": "https://nottyboi.me/oauth/dist/tap/tos",
-    "policy_uri": "https://nottyboi.me/oauth/dist/tap/policy",
+    "client_uri": "https://nottyboi-collection.github.io/oauth",
+    "logo_uri": "https://nottyboi-collection.github.io/oauth/dist/assets/logo.png",
+    "tos_uri": "https://nottyboi-collection.github.io/oauth/dist/tap/tos",
+    "policy_uri": "https://nottyboi-collection.github.io/oauth/dist/tap/policy",
     "redirect_uris": [
-        "https://nottyboi.me/oauth/dist/callback"
+        "https://nottyboi-collection.github.io/oauth/dist/callback"
     ],
     "scope": "atproto transition:generic",
     "grant_types": [
