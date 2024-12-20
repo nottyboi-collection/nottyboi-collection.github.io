@@ -1,72 +1,125 @@
 import { Agent } from '@atproto/api'
 import { BrowserOAuthClient } from '@atproto/oauth-client-browser'
+import type { AppBskyActorDefs } from '@atproto/api'
+
+interface UIElements {
+  loading: HTMLElement
+  loginForm: HTMLElement
+  profile: HTMLElement
+  error: HTMLElement
+  handleInput: HTMLInputElement
+  loginButton: HTMLElement
+  logoutButton: HTMLElement
+  profileImage: HTMLImageElement
+  profileName: HTMLElement
+  profileHandle: HTMLElement
+}
+
+const getElements = (): UIElements => {
+  return {
+    loading: document.getElementById('loading')!,
+    loginForm: document.getElementById('login-form')!,
+    profile: document.getElementById('profile')!,
+    error: document.getElementById('error')!,
+    handleInput: document.getElementById('handle-input') as HTMLInputElement,
+    loginButton: document.getElementById('login-button')!,
+    logoutButton: document.getElementById('logout-button')!,
+    profileImage: document.getElementById('profile-image') as HTMLImageElement,
+    profileName: document.getElementById('profile-name')!,
+    profileHandle: document.getElementById('profile-handle')!,
+  }
+}
+
+const showError = (message: string) => {
+  const elements = getElements()
+  elements.error.textContent = message
+  elements.error.classList.remove('hidden')
+  setTimeout(() => {
+    elements.error.classList.add('hidden')
+  }, 5000)
+}
+
+const showLoading = () => {
+  const elements = getElements()
+  elements.loading.classList.remove('hidden')
+  elements.loginForm.classList.add('hidden')
+  elements.profile.classList.add('hidden')
+  elements.error.classList.add('hidden')
+}
+
+const showLoginForm = () => {
+  const elements = getElements()
+  elements.loading.classList.add('hidden')
+  elements.loginForm.classList.remove('hidden')
+  elements.profile.classList.add('hidden')
+  elements.error.classList.add('hidden')
+}
+
+const showProfile = () => {
+  const elements = getElements()
+  elements.loading.classList.add('hidden')
+  elements.loginForm.classList.add('hidden')
+  elements.profile.classList.remove('hidden')
+  elements.error.classList.add('hidden')
+}
 
 async function main() {
+  const elements = getElements()
+  showLoading()
+
   const oauthClient = await BrowserOAuthClient.load({
     clientId: 'https://nottyboi.me/oauth/static/client-metadata.json',
     handleResolver: 'https://bsky.social/',
   })
 
-  const result = await oauthClient.init()
+  try {
+    const result = await oauthClient.init()
 
-  if (result) {
-    if ('state' in result) {
-      console.log('The user was just redirected back from the authorization page')
+    if (result?.session) {
+      const agent = new Agent(result.session)
+      const profile = await agent.api.app.bsky.actor.getProfile({ actor: result.session.did })
+      
+      const profileView = profile.data as AppBskyActorDefs.ProfileViewDetailed
+      elements.profileImage.src = profileView.avatar || 'https://placeholder.co/100'
+      elements.profileName.textContent = profileView.displayName || result.session.did
+      elements.profileHandle.textContent = profileView.handle
+      showProfile()
+
+      elements.logoutButton.addEventListener('click', async () => {
+        await result.session.signOut()
+        window.location.reload()
+      })
+    } else {
+      showLoginForm()
+
+      elements.loginButton.addEventListener('click', async () => {
+        const handle = elements.handleInput.value.trim()
+        if (!handle) {
+          showError('Please enter your handle')
+          return
+        }
+
+        try {
+          showLoading()
+          const url = await oauthClient.authorize(handle)
+          window.location.href = url.href
+        } catch (err) {
+          console.error(err)
+          showError('Failed to start authentication process')
+          showLoginForm()
+        }
+      })
+
+      elements.handleInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          elements.loginButton.click()
+        }
+      })
     }
-
-    console.log(`The user is currently signed in as ${result.session.did}`)
-  }
-
-  const session = result?.session
-
-  if (!session) {
-    const handle = prompt('Enter your atproto handle to authenticate')
-    if (!handle) throw new Error('Authentication process canceled by the user')
-
-    const url = await oauthClient.authorize(handle)
-
-    window.open(url, '_self', 'noopener')
-
-    await new Promise<never>((resolve, reject) => {
-      setTimeout(
-        reject,
-        10_000,
-        new Error('User navigated back from the authorization page'),
-      )
-    })
-  }
-
-  if (session) {
-    const agent = new Agent(session)
-
-    const fetchProfile = async () => {
-      if (!agent.did) {
-        throw new Error('Agent DID is not available')
-      }
-      const profile = await agent.getProfile({ actor: agent.did })
-      return profile.data
-    }
-
-    document.body.textContent = `Authenticated as ${agent.did}`
-
-    const profileBtn = document.createElement('button')
-    document.body.appendChild(profileBtn)
-    profileBtn.textContent = 'Fetch Profile'
-    profileBtn.onclick = async () => {
-      const profile = await fetchProfile()
-      outputPre.textContent = JSON.stringify(profile, null, 2)
-    }
-
-    const logoutBtn = document.createElement('button')
-    document.body.appendChild(logoutBtn)
-    logoutBtn.textContent = 'Logout'
-    logoutBtn.onclick = async () => {
-      await session.signOut()
-      window.location.reload()
-    }
-
-    const outputPre = document.createElement('pre')
-    document.body.appendChild(outputPre)
+  } catch (err) {
+    console.error(err)
+    showError('Failed to initialize OAuth client')
+    showLoginForm()
   }
 }
 

@@ -32,26 +32,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@atproto-labs/handle-resolver@npm:0.1.4":
-  version: 0.1.4
-  resolution: "@atproto-labs/handle-resolver@npm:0.1.4"
+"@atproto-labs/handle-resolver@npm:0.1.5":
+  version: 0.1.5
+  resolution: "@atproto-labs/handle-resolver@npm:0.1.5"
   dependencies:
     "@atproto-labs/simple-store": "npm:0.1.1"
     "@atproto-labs/simple-store-memory": "npm:0.1.1"
     "@atproto/did": "npm:0.1.3"
     zod: "npm:^3.23.8"
-  checksum: 10c0/68e3564ce5da0fbb62b98554090318ae6112df91be502698c27479ce8789c30659249e15fb56c29136b1374bc60a6d9945679760d356f2ccb7d761b51b798a04
+  checksum: 10c0/6a74fa3cca3a9cb1b0e92bce8a2f86ffc05b2c46c553aa3813b560d3d6e262eda9f6b7636f4c3f459a5c98a9fb4025ff47a663f34217d3dbf5ef2aa37d8e10a3
   languageName: node
   linkType: hard
 
-"@atproto-labs/identity-resolver@npm:0.1.7":
-  version: 0.1.7
-  resolution: "@atproto-labs/identity-resolver@npm:0.1.7"
+"@atproto-labs/identity-resolver@npm:0.1.8":
+  version: 0.1.8
+  resolution: "@atproto-labs/identity-resolver@npm:0.1.8"
   dependencies:
     "@atproto-labs/did-resolver": "npm:0.1.6"
-    "@atproto-labs/handle-resolver": "npm:0.1.4"
+    "@atproto-labs/handle-resolver": "npm:0.1.5"
     "@atproto/syntax": "npm:0.3.1"
-  checksum: 10c0/a6c65bf13bc3c59241724766dd3d16b3c54ee37cb5e917e53f75c1c1fb9e715a2ca2af5d6d841867e03542afb2455b318abac138e2428d75ae54cd801ea7b489
+  checksum: 10c0/2548e6068970a56c11931a4e8cc227d617d7aaf93e3147d5f8b956ffb9eae8af3b9ebdad50a7c4b2b8ebabae1f95e5d136f0ccca99372179a2001244ac69e48d
   languageName: node
   linkType: hard
 
@@ -160,29 +160,29 @@ __metadata:
   linkType: hard
 
 "@atproto/oauth-client-browser@npm:^0.3.4":
-  version: 0.3.4
-  resolution: "@atproto/oauth-client-browser@npm:0.3.4"
+  version: 0.3.5
+  resolution: "@atproto/oauth-client-browser@npm:0.3.5"
   dependencies:
     "@atproto-labs/did-resolver": "npm:0.1.6"
-    "@atproto-labs/handle-resolver": "npm:0.1.4"
+    "@atproto-labs/handle-resolver": "npm:0.1.5"
     "@atproto-labs/simple-store": "npm:0.1.1"
     "@atproto/did": "npm:0.1.3"
     "@atproto/jwk": "npm:0.1.1"
     "@atproto/jwk-webcrypto": "npm:0.1.2"
-    "@atproto/oauth-client": "npm:0.3.4"
+    "@atproto/oauth-client": "npm:0.3.5"
     "@atproto/oauth-types": "npm:0.2.1"
-  checksum: 10c0/674e6718142c9b63692fba125d855f652a0a5189c18e0899cf83b3b8dc0934fd56ba9cae897223a77b8828a5fca3a52250aca4e40e389641f8aaf54f34e6f77d
+  checksum: 10c0/760bca7c95cfac99c4e6e7a3bf1d44a42d20e9f543bb5dfdb65c98cf1e916fd039584b914174f7c2bba5954683e7f487f0356d9a72bf315ba60d5a9562e59734
   languageName: node
   linkType: hard
 
-"@atproto/oauth-client@npm:0.3.4":
-  version: 0.3.4
-  resolution: "@atproto/oauth-client@npm:0.3.4"
+"@atproto/oauth-client@npm:0.3.5":
+  version: 0.3.5
+  resolution: "@atproto/oauth-client@npm:0.3.5"
   dependencies:
     "@atproto-labs/did-resolver": "npm:0.1.6"
     "@atproto-labs/fetch": "npm:0.1.2"
-    "@atproto-labs/handle-resolver": "npm:0.1.4"
-    "@atproto-labs/identity-resolver": "npm:0.1.7"
+    "@atproto-labs/handle-resolver": "npm:0.1.5"
+    "@atproto-labs/identity-resolver": "npm:0.1.8"
     "@atproto-labs/simple-store": "npm:0.1.1"
     "@atproto-labs/simple-store-memory": "npm:0.1.1"
     "@atproto/did": "npm:0.1.3"
@@ -191,7 +191,7 @@ __metadata:
     "@atproto/xrpc": "npm:0.6.5"
     multiformats: "npm:^9.9.0"
     zod: "npm:^3.23.8"
-  checksum: 10c0/d028916a70d1273de11c5713cbff26b8234de7a9cb1269a20d3d80e6ef0d4cd5e05be73d311d2672b09ecec831960c63142dc015b74e98108965d42ac6f9b76b
+  checksum: 10c0/fb07b41e80ad02d2857bbcefbcdaa8e0db78a310a758ff5e91d40958360d24a84ff9848d7d54737536aeeb5b5740da5cc7198526436851a9c8bf38126ad69bc1
   languageName: node
   linkType: hard
 
@@ -579,6 +579,15 @@ __metadata:
   version: 1.0.6
   resolution: "@types/estree@npm:1.0.6"
   checksum: 10c0/cdfd751f6f9065442cd40957c07fd80361c962869aa853c1c2fd03e101af8b9389d8ff4955a43a6fcfa223dd387a089937f95be0f3eec21ca527039fd2d9859a
+  languageName: node
+  linkType: hard
+
+"@types/mime@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/mime@npm:4.0.0"
+  dependencies:
+    mime: "npm:*"
+  checksum: 10c0/c544ca670c2cb53b96c7e4a1b4ecfdf3777dad4b74f7bb305680eed82c753a7ccfdf03c8b06c9fba48bb10d2a96ae95c9a4007b6c83bc5fdc9cfa7250c07b85b
   languageName: node
   linkType: hard
 
@@ -1060,6 +1069,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mime@npm:*":
+  version: 4.0.6
+  resolution: "mime@npm:4.0.6"
+  bin:
+    mime: bin/cli.js
+  checksum: 10c0/1797b1c6da4cdb817fc18a4b8d99d6034885946f3d3680c2e4eb18bf19d4a64b42559f1eae0d1607e216f584311f9f806b5bfa1426baebeae4807bec5e14188a
+  languageName: node
+  linkType: hard
+
 "minimatch@npm:^9.0.4":
   version: 9.0.5
   resolution: "minimatch@npm:9.0.5"
@@ -1222,6 +1240,7 @@ __metadata:
   dependencies:
     "@atproto/api": "npm:^0.13.21"
     "@atproto/oauth-client-browser": "npm:^0.3.4"
+    "@types/mime": "npm:^4.0.0"
     "@types/node": "npm:^22.10.2"
     typescript: "npm:^5.7.2"
     vite: "npm:^6.0.4"
