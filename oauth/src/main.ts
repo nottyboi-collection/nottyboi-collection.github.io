@@ -70,7 +70,7 @@ async function main() {
   const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
   const clientId = isDevelopment
     ? 'http://localhost'
-    : 'https://nottyboi-collection.github.io/oauth/static/client-metadata.json';
+    : 'https://nottyboi.me/oauth/static/client-metadata.json';
 
   const oauthClient = await BrowserOAuthClient.load({
     clientId,
