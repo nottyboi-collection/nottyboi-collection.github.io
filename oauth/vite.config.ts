@@ -8,6 +8,9 @@ export default defineConfig({
         emptyOutDir: true,
     },
     server: {
-        port: 3000,
+        port: 4173,
     },
+    preview: {
+        port: 4173
+    }
 })

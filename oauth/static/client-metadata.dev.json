@@ -1,12 +1,12 @@
 {
     "client_id": "http://localhost",
     "client_name": "NottyBoi OAuth (Development)",
-    "client_uri": "http://127.0.0.1:4173/oauth",
-    "logo_uri": "http://127.0.0.1:4173/oauth/assets/logo.png",
-    "tos_uri": "http://127.0.0.1:4173/oauth/tap/tos",
-    "policy_uri": "http://127.0.0.1:4173/oauth/tap/policy",
+    "client_uri": "http://localhost:4173",
+    "logo_uri": "http://localhost:4173/assets/logo.png",
+    "tos_uri": "http://localhost:4173/tap/tos",
+    "policy_uri": "http://localhost:4173/tap/policy",
     "redirect_uris": [
-        "http://127.0.0.1:4173/oauth/callback/"
+        "http://localhost:4173/callback"
     ],
     "scope": "atproto transition:generic",
     "grant_types": [
