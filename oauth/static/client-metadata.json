@@ -1,10 +1,10 @@
 {
-    "client_id": "https://nottyboi.me/oauth/dist",
+    "client_id": "https://nottyboi.me/oauth/dist/static/client-metadata.json",
     "client_name": "NottyBoi OAuth",
     "client_uri": "https://nottyboi.me/oauth/dist",
-    "logo_uri": "https://nottyboi.me/oauth/dist/assets/logo.png",
-    "tos_uri": "https://nottyboi.me/oauth/dist/tap/tos",
-    "policy_uri": "https://nottyboi.me/oauth/dist/tap/policy",
+    "logo_uri": "https://nottyboi.me/assets/logo.png",
+    "tos_uri": "https://nottyboi.me/tap/tos",
+    "policy_uri": "https://nottyboi.me/tap/policy",
     "redirect_uris": [
         "https://nottyboi.me/oauth/dist/callback"
     ],
